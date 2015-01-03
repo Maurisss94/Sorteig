@@ -1,5 +1,6 @@
 package net.mauro.Sorteig;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,13 +14,22 @@ import java.util.Scanner;
 public class Principal implements Serializable{
   
   static ArrayList<Jugador> array;
+  
+  static File fitxerSerialitzacio = new File("participants");
  
 
   public static void main(String[] args) throws IOException, ClassNotFoundException{
     
+    if(!fitxerSerialitzacio.exists()){
+      
     ArrayList<Jugador> array= crearJugadors();
     Joc joc = new Joc(array);
     joc.començarJoc(array);
+    }else{
+      deserialitzacioObjecte();
+      Joc joc = new Joc(array);
+      joc.començarJoc(array);
+    }
     
 
   }
@@ -55,7 +65,7 @@ public class Principal implements Serializable{
     
     FileInputStream file = new FileInputStream("participants");
     ObjectInputStream in = new ObjectInputStream(file);
-    Jugador e= (Jugador) in.readObject();
+    array= (ArrayList<Jugador>) in.readObject();
     
   }
   

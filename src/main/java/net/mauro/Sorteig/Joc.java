@@ -25,11 +25,6 @@ public class Joc implements Serializable{
     
     Scanner lector = new Scanner(System.in);
     
-    if(fitxerSerial.exists()){
-      Principal.deserialitzacioObjecte();
-    }else{
-      
-    
     System.out.println("Comença el joc: ");
    
     int monedes=0;
@@ -60,7 +55,7 @@ public class Joc implements Serializable{
     
     
     }
-    }
+    
     
     
     
