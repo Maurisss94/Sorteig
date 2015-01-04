@@ -22,7 +22,7 @@ public class Principal implements Serializable{
     
     if(!fitxerSerialitzacio.exists()){
       
-    ArrayList<Jugador> array= crearJugadors();
+    array= crearJugadors();
     Joc joc = new Joc(array);
     joc.començarJoc(array);
     }else{
@@ -35,8 +35,6 @@ public class Principal implements Serializable{
   }
   public static ArrayList<Jugador> crearJugadors() throws IOException, ClassNotFoundException{
     
-    
-    
     Scanner lector = new Scanner(System.in);
     ArrayList<Jugador> jugadors = new ArrayList<Jugador>();
     
@@ -47,9 +45,11 @@ public class Principal implements Serializable{
       System.out.println("Escriu el nom del jugador: ");
       String nomJugador = lector.next();
       Jugador jugador = new Jugador(nomJugador, 10);
-      serialitzarObjecte();
+      
       jugadors.add(jugador);
     }
+    
+    serialitzarObjecte();
     
     
     return jugadors;

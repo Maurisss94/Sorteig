@@ -1,6 +1,8 @@
 package net.mauro.Sorteig;
 
-public class Carta {
+import java.io.Serializable;
+
+public class Carta implements Serializable{
   
   int numero;
   

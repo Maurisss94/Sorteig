@@ -1,8 +1,9 @@
 package net.mauro.Sorteig;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Baralla {
+public class Baralla implements Serializable{
   
   int [] numeros = {1,2,3,4,5,6,7,8,9,10,11,12};
   ArrayList<Carta> arrayCartes;

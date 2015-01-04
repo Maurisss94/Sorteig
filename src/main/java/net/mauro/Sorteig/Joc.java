@@ -13,6 +13,7 @@ public class Joc implements Serializable{
   ArrayList<Jugador> Jugadors;
   transient boolean fi;
   private File fitxerSerial = new File("participants");
+  int ronda = 0;
   
   public Joc( ArrayList<Jugador> Jugadorsj) throws IOException{
 
@@ -28,7 +29,8 @@ public class Joc implements Serializable{
     System.out.println("Comença el joc: ");
    
     int monedes=0;
-    int ronda = 0;
+    
+    
     while(!fi){
       
       ronda++;
@@ -48,9 +50,11 @@ public class Joc implements Serializable{
       }
       
     }
+    
     System.out.print("El guanyador de la ronda "+ronda+ " es:");
     int cartaAlta = comprovarCartaAlta(jugadors);
     comprovarGuanyador(cartaAlta, jugadors);
+    Principal.serialitzarObjecte();
     
     
     
@@ -62,13 +66,15 @@ public class Joc implements Serializable{
   }
   public void comprovarGuanyador(int cartaAlta, ArrayList<Jugador> jugadors){
     
+    String guanyador="";
     for(int i=0;i<jugadors.size();i++){
       for(int j=0;j<jugadors.get(i).getCartes().size();j++){
         if(jugadors.get(i).getCartes().get(j).getNumero() == cartaAlta){
-          System.out.println(" " + jugadors.get(i).getNom()+" ");
+           guanyador =jugadors.get(i).getNom();
         }
       }
     }
+    System.out.println(" "+ guanyador);
   }
   public int apostarMonedes(ArrayList<Jugador> jugadors, int monedes, int i) throws IOException{
 
@@ -108,7 +114,9 @@ public class Joc implements Serializable{
             cartes.add(baralla.get(generarAleatori(monedes)));
             jugadors.get(i).setCartes(cartes);
             cont++;
+            
       }
+      
       Principal.serialitzarObjecte();
     
   }
